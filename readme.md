@@ -1,5 +1,7 @@
 # Bizarre Hairstyles
 
+## Deployed Link: https://s56-bizarre-hairstyles.onrender.com 
+
 ## Project Idea
 
 Bizarre Hairstyles is a web application that showcases bizarre, weirdest, and most outlandish hairstyles from around the world. It serves as a source of entertainment for those looking to have some fun with their hair and have a good laugh. Users can browse through a curated collection of bizarre hairstyles and save their favorites.  Whether you're looking for a good laugh or some creative inspiration, this site has you covered with an epic collection of hairstyles that defy convention and embrace the bizarre.
