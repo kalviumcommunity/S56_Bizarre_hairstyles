@@ -1,6 +1,6 @@
 # Bizarre Hairstyles
 
-## Deployed Link: https://s56-bizarre-hairstyles.onrender.com 
+## [Deployed Link](https://s56-bizarre-hairstyles.onrender.com)
 
 ## Project Idea
 
