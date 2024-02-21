@@ -1,6 +1,7 @@
 # Bizarre Hairstyles
 
 ## [Deployed Link](https://s56-bizarre-hairstyles.onrender.com)
+A live version of the Bizarre Hairstyles project showcasing unique and creative hairstyles from around the world.
 
 ## Project Idea
 

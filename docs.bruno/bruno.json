@@ -2,6 +2,7 @@
   "version": "1",
   "name": "docs.bruno",
   "type": "collection",
+  "description": "A collection of documentation files for the Bruno project.",
   "ignore": [
     "node_modules",
     ".git"
