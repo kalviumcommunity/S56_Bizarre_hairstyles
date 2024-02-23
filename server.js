@@ -7,7 +7,11 @@ app.get('/ping' , (req, res) =>{
 })
 
 const mongoose = require('mongoose');
-const mongoServer = require('./config.js')
+const mongoServer = require('./config/db.js')
+
+process.on('unhandledRejection', error => {
+  console.error('Unhandled promise rejection:', error);
+});
 
 const connectToDB = async () => {
   try {
@@ -37,7 +41,7 @@ module.exports = {
 if (require.main === module) {
     app.listen(3000, (err) => {
         if (err) console.error(err);
-        else console.log(`server running on PORT: 3000`);
+        else console.log('Server is running on port 3000');
     });
 }
 

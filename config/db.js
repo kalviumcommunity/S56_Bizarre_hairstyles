@@ -1,5 +1,6 @@
+require('dotenv').config();
 const config = {
-    mongoURI: 'mongodb+srv://chinmayeeharane:Mongodbuser@cluster0.xwpsezr.mongodb.net/bizarreHairstyles?retryWrites=true&w=majority&appName=Cluster0',
+    mongoURI: process.env.MONGO_URI,
   };
   
   module.exports = config;
