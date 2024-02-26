@@ -1,10 +1,13 @@
 const express = require('express');
+const {router} = require('./routes.js')
 const app = express();
-app.use(express.json());
+// app.use(express.json());
 
 app.get('/ping' , (req, res) =>{
     res.status(200).send("pong")
 })
+
+app.use(router)
 
 const mongoose = require('mongoose');
 const mongoServer = require('./config/db.js')
