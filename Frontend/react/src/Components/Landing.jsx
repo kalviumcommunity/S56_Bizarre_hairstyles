@@ -19,8 +19,8 @@ const Landing = () => {
 
       <div className='middle-content'>
         <h1>Hair Spectacle</h1>
-        <img src={small} alt="" className='small-img'/>
-        <img src={big} alt="" className='big-img'/>
+        <img src={small} alt="small img" className='small-img'/>
+        <img src={big} alt="big img" className='big-img'/>
         <div className='description'>
             <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
             <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a ex risus. Integer cu. Fusce a ex risus. Integer cu.</h5>
