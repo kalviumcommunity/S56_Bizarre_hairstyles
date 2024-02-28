@@ -7,7 +7,7 @@ const Landing = () => {
   return (
     <>
       <nav> 
-        <h2 className='logo' >Hair Spectacle</h2>
+        <h2 className='logo'>Hair Spectacle</h2>
         <div className='nav-content'>
             <h4>Trending</h4>
             <h4>Explore</h4>
