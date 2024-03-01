@@ -1,12 +1,13 @@
 import React from 'react'
-import './App.css'
 import Landing from './Components/Landing.jsx'
+import Explore from './Components/Explore.jsx'
 
 function App() {
 
   return (
     <>
       <Landing/>
+      <Explore/>
     </>
   )
 }
