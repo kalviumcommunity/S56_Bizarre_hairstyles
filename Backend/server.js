@@ -2,11 +2,9 @@ const express = require('express')
 const {router} = require('./routes.js')
 const app = express();
 // app.use(express.json());
-const cors = require('cors')
-const userModel = require('./Models/user.js')
 
 app.get('/ping' , (req, res) =>{
-    res.status(200).send("pong")
+  res.status(200).send("pong")
 })
 
 app.get("/" , (req,res)=>{
@@ -14,7 +12,10 @@ app.get("/" , (req,res)=>{
 })
 
 app.use(router)
+
+const cors = require('cors')
 app.use(cors())
+const userModel = require('./Models/user.js')
 
 
 const mongoose = require('mongoose');
