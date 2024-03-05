@@ -4,10 +4,19 @@ const app = express();
 // app.use(express.json());
 
 app.get('/ping' , (req, res) =>{
-    res.status(200).send("pong")
+  res.status(200).send("pong")
+})
+
+app.get("/" , (req,res)=>{
+  mongoose.connection.readyState === 1 ? res.send("MongoDb Connected") : res.send("MongoDb not Connected")
 })
 
 app.use(router)
+
+const cors = require('cors')
+app.use(cors())
+const userModel = require('./Models/user.js')
+
 
 const mongoose = require('mongoose');
 const mongoServer = require('./config/db.js')
@@ -25,6 +34,8 @@ const connectToDB = async () => {
   }
 };
 
+connectToDB()
+
 const disconnectFromDB = async () => {
   try {
     await mongoose.connection.close()
@@ -33,6 +44,11 @@ const disconnectFromDB = async () => {
     console.error('error disconnecting from mongoDB:', err.message);
   }
 };
+
+app.get("/getdata" , async (req,res)=>{
+  let data = await userModel.find({})
+  res.json(data)
+})
 
 module.exports = {
   connectToDB,

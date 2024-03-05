@@ -9,7 +9,7 @@
 }
 
 .explore{
-    width: 60vw;
+    width: 66vw;
     height: 70vh;
     margin: 20vh 0 10vh 19vw;
     display: flex;
@@ -36,9 +36,10 @@
 
 .description-img{
     font-size: 20px;
-    width: 20vw;
+    width: 36vw;
     height: 5vh;
-    margin-left: -1.5vw;
+    text-align: left;
+    margin-left: 0.5vw;
 }
 
 .bizarreness{
