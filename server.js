@@ -2,12 +2,20 @@ const express = require('express')
 const {router} = require('./routes.js')
 const app = express();
 // app.use(express.json());
+const cors = require('cors')
+const userModel = require('./Models/user.js')
 
 app.get('/ping' , (req, res) =>{
     res.status(200).send("pong")
 })
 
+app.get("/" , (req,res)=>{
+  mongoose.connection.readyState === 1 ? res.send("MongoDb Connected") : res.send("MongoDb not Connected")
+})
+
 app.use(router)
+app.use(cors())
+
 
 const mongoose = require('mongoose');
 const mongoServer = require('./config/db.js')
@@ -25,6 +33,8 @@ const connectToDB = async () => {
   }
 };
 
+connectToDB()
+
 const disconnectFromDB = async () => {
   try {
     await mongoose.connection.close()
@@ -33,6 +43,11 @@ const disconnectFromDB = async () => {
     console.error('error disconnecting from mongoDB:', err.message);
   }
 };
+
+app.get("/getdata" , async (req,res)=>{
+  let data = await userModel.find({})
+  res.json(data)
+})
 
 module.exports = {
   connectToDB,

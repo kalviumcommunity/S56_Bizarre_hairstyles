@@ -15,8 +15,20 @@ export default function Explore() {
           <h5 className='category'>Category: Hipster</h5>
           <h5 className='accessories'>Accessories: Glitter gel, stencil </h5>
           <button className='explore-button'>Explore</button>
-        </div>
+        </div>        
       </div>
+
+      {/* <div className='explore'>
+        <img className='explore-img' src={explore} alt="Explore Img" />
+        <div className='details'>
+          <h3 className='title'>Glitter Beard</h3>
+          <h4 className='description-img'>Beard covered in glitter</h4>
+          <h4 className='bizarreness'>Bizarreness level: 5</h4>
+          <h5 className='category'>Category: Hipster</h5>
+          <h5 className='accessories'>Accessories: Glitter gel, stencil </h5>
+          <button className='explore-button'>Explore</button>
+        </div>        
+      </div> */}
     </>
   )
 }
