@@ -1,7 +1,14 @@
 const express = require('express')
-const {router} = require('./routes.js')
+const router = require('./routes.js')
+const userModel = require('./Models/user.js')
+const mongoose = require('mongoose')
+const mongoServer = require('./config/db.js')
+const cors = require('cors')
+
 const app = express();
-// app.use(express.json());
+app.use(cors())
+app.use(express.json());
+app.use(router)
 
 app.get('/ping' , (req, res) =>{
   res.status(200).send("pong")
@@ -11,15 +18,7 @@ app.get("/" , (req,res)=>{
   mongoose.connection.readyState === 1 ? res.send("MongoDb Connected") : res.send("MongoDb not Connected")
 })
 
-app.use(router)
 
-const cors = require('cors')
-app.use(cors())
-const userModel = require('./Models/user.js')
-
-
-const mongoose = require('mongoose');
-const mongoServer = require('./config/db.js')
 
 process.on('unhandledRejection', error => {
   console.error('Unhandled promise rejection:', error);
@@ -50,12 +49,15 @@ app.get("/getdata" , async (req,res)=>{
   res.json(data)
 })
 
-module.exports = {
-  connectToDB,
-  disconnectFromDB,
-  mongooseConnection: mongoose.connection,
-};
-
+app.post("/postcontent", async(req, res)=>{
+   try {
+    let result = new userModel(req.body);
+    await result.save()
+    res.send(result)
+   } catch (error) {
+    res.send(error)
+   }
+})
 
 if (require.main === module) {
     app.listen(3000, (err) => {
