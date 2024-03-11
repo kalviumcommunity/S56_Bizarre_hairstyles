@@ -15,8 +15,18 @@ export default function Add() {
   const navigate = useNavigate()
 
   const submit = (e) =>{
-    // e.preventDefault()
-    axios.post('https://s56-bizarre-hairstyles.onrender.com/postcontent', {name, image, description, category, bizarreness, accessories})
+     e.preventDefault()
+     let obj={
+      id: Math.random(100,10000000),
+      hairstyle_name:name,
+      description:description,
+      bizarreness_level:bizarreness,
+      category,
+      is_colorful:true,
+      accessories_involved:accessories,
+      image
+  }
+    axios.post('https://s56-bizarre-hairstyles.onrender.com/postcontent', obj)
     .then(result => {
       console.log(result)
       // console.log("hello")
