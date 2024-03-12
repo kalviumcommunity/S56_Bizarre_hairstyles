@@ -74,7 +74,7 @@ app.post("/postcontent", async(req, res)=>{
 //   }
 // })
 
-app.put(`/update/${id}`, async(req, res) => {
+app.put(`/update/:id`, async(req, res) => {
   const { id } = req.params;
   try {
     const updatedUser = await userModel.findByIdAndUpdate(id, req.body, { new: true });
