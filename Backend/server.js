@@ -51,18 +51,19 @@ app.get("/getdata" , async (req,res)=>{
 
 app.post("/postcontent", async(req, res)=>{
    try {
+    console.log(req.body)
     let result = new userModel(req.body);
     await result.save()
     res.send(result)
    } catch (error) {
-    res.send(error)
+    res.send(error.message)
    }
 })
 
 if (require.main === module) {
-    app.listen(3000, (err) => {
+    app.listen(3200, (err) => {
         if (err) console.error(err);
-        else console.log('Server is running on port 3000');
+        else console.log('Server is running on port 3200');
     });
 }
 
