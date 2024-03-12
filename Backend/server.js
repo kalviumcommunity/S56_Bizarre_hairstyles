@@ -58,6 +58,37 @@ app.post("/postcontent", async(req, res)=>{
    }
 })
 
+// app.put("/update/:id", async(req, res)=>{
+//   const {id} = req.params
+//   try{
+//     userModel.findByIdAndUpdate({_id:id}, req.body)
+//     .then((res)=>{
+//       console.log("Successfully updated", res)
+//     })
+//     .catch((err)=>{
+//       console.error(err)
+//     })
+//   }
+//   catch(err){
+//     console.error(err)
+//   }
+// })
+
+app.put(`/update/${id}`, async(req, res) => {
+  const { id } = req.params;
+  try {
+    const updatedUser = await userModel.findByIdAndUpdate(id, req.body, { new: true });
+    if (!updatedUser) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    console.log("Successfully updated:", updatedUser);
+    res.json(updatedUser);
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 if (require.main === module) {
     app.listen(3200, (err) => {
         if (err) console.error(err);
