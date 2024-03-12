@@ -18,8 +18,6 @@ app.get("/" , (req,res)=>{
   mongoose.connection.readyState === 1 ? res.send("MongoDb Connected") : res.send("MongoDb not Connected")
 })
 
-
-
 process.on('unhandledRejection', error => {
   console.error('Unhandled promise rejection:', error);
 });
@@ -56,7 +54,7 @@ app.post("/postcontent", async(req, res)=>{
     await result.save()
     res.send(result)
    } catch (error) {
-    res.send(error.message)
+    res.status(500).json({ error: error.message })
    }
 })
 
