@@ -24,9 +24,9 @@
 }
 
 .details{
-    width: 22vw;
-    height: 40vh;
-    margin: 13vh 0 0 4vw;
+    width: 33vw;
+    height: 44vh;
+    margin: 10vh 0 0 4vw;
 }
 
 .title{
@@ -63,10 +63,10 @@
     height: 5vh;
 }
 
-.explore-button{
-    margin: 5vh 0 0 -8vw;
-    width: 13vw;
-    height: 6vh;
+.Update-button{
+    margin: 7vh 0 0 -4vw;
+    width: 12vw;
+    height: 7vh;
     background-color: rgba(123, 44, 191, 1);
     color: aliceblue;
     border: 0px;
@@ -74,7 +74,24 @@
     transition: 0.5s ease;
 }
 
-.explore-button:hover{
+.Update-button:hover{
+    transform: scale(1.1);
+    background-color: rgba(224, 170, 255, 1);
+    color: black;
+}
+
+.Delete-button{
+    margin: 7vh 0 0 5vw;
+    width: 12vw;
+    height: 7vh;
+    background-color: rgba(123, 44, 191, 1);
+    color: aliceblue;
+    border: 0px;
+    border-radius: 3px;
+    transition: 0.5s ease;
+}
+
+.Delete-button:hover{
     transform: scale(1.1);
     background-color: rgba(224, 170, 255, 1);
     color: black;
