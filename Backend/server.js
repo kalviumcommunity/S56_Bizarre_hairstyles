@@ -74,7 +74,19 @@ app.post("/postcontent", async(req, res)=>{
 //   }
 // })
 
-app.put(`/update/id`, async(req, res) => {
+app.get("/update/:id" , async (req,res)=>{
+  // let data = await userModel.findByIdAndUpdate({_id:id})
+  // const { id } = req.params;
+  // res.json(data)
+  const id=req.params.id;
+  userModel.findByIdAndUpdate({_id:id},{id:req.body.i,
+        hairstyle_name:req.body.hairstyle_name,description:req.body.description, category:req.body.category,
+        bizarreness_level:req.body.bizarreness_level, accessories_involved:req.body.accessories_involved, image:req.body.image})
+    .then((data) => {res.json(data)})
+    .catch((err) => {res.json(err)})
+})
+
+app.put(`/update/:id`, async(req, res) => {
   const { id } = req.params;
   try {
     const updatedUser = await userModel.findByIdAndUpdate(id, req.body, { new: true });
