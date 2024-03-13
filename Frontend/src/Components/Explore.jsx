@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import './Explore.css'
 import axios from 'axios'
 import Navbar from './Navbar'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 export default function Explore() {

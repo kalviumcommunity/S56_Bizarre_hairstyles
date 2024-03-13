@@ -7,36 +7,32 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 export default function Update() {
 
-    const [name, useName] = useState("")
-    const [image, useImage] = useState("")
-    const [description, useDescription] = useState("")
-    const [category, useCategory] = useState("")
-    const [bizarreness, useBizarreness] = useState("")
-    const [accessories, useAccessories] = useState("")
+    const [name, setName] = useState("")
+    const [image, setImage] = useState("")
+    const [description, setDescription] = useState("")
+    const [category, setCategory] = useState("")
+    const [bizarreness, setBizarreness] = useState("")
+    const [accessories, setAccessories] = useState("")
     const navigate = useNavigate()
 
-    // const {id} = useParams()
-    // const handleUpdade = (e) =>{
-    //     e.preventDefault()
-    //     let obj={
-    //         id: id,
-    //         hairstyle_name:name,
-    //         description:description,
-    //         bizarreness_level:bizarreness,
-    //         category,
-    //         is_colorful:true,
-    //         accessories_involved:accessories,
-    //         image
-    //     }
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+            const response = await axios.get(`https://s56-bizarre-hairstyles.onrender.com/update/${_id}`)
+            const existingData = response.data
+            setName(existingData.hairstyle_name || '')
+            setImage(existingData.image || '')
+            setDescription(existingData.description || '')
+            setCategory(existingData.category || '')
+            setBizarreness(existingData.bizarreness_level || '')
+            setAccessories(existingData.accessories_involved || '')
+        } catch (error) {
+              console.log(error)
+          }
+      }
 
-    //     axios.put(`https://s56-bizarre-hairstyles.onrender.com/update/${id}`, obj)
-    //     .then(result => {
-    //     console.log(result)
-    //     // console.log("hello")
-    //     navigate('/explore')
-    //     })
-    //     .catch(err => console.log(err))
-    // }
+      fetchData()
+    }, [_id])
 
     const {_id} = useParams()
     const handleUpdade = async (e) =>{
@@ -52,7 +48,7 @@ export default function Update() {
                 is_colorful: true,
                 accessories_involved: accessories,
                 image: image
-            };
+            }
     
             await axios.put(`https://s56-bizarre-hairstyles.onrender.com/update/${_id}`, obj);
             navigate('/explore');
@@ -71,14 +67,14 @@ export default function Update() {
         </div>
         <div className='update-container'>
             <h2 className='update-title'>Update</h2>
-            <input className='inputBox' value={image} type="text" placeholder='Enter Image URL' onChange={(e) => useImage(e.target.value)}/>
-            <input className='inputBox' type="text" value={name} placeholder='Enter Name of the Hairstyle' onChange={(e) => useName(e.target.value)}/>
-            <input className='inputBox' type="text" value={description} placeholder='Enter Description of the Hairstyle' onChange={(e) => useDescription(e.target.value)}/>
+            <input className='inputBox' value={image} type="text" placeholder='Enter Image URL' onChange={(e) => setImage(e.target.value)}/>
+            <input className='inputBox' type="text" value={name} placeholder='Enter Name of the Hairstyle' onChange={(e) => setName(e.target.value)}/>
+            <input className='inputBox' type="text" value={description} placeholder='Enter Description of the Hairstyle' onChange={(e) => setDescription(e.target.value)}/>
             <div className='category-bLevel'>
-              <input className='small-inputBox' type="text" value={category} placeholder='Enter Category' onChange={(e) => useCategory(e.target.value)}/>
-              <input className='small-inputBox' type="number" value={bizarreness} placeholder='Enter Bizarreness Level' onChange={(e) => useBizarreness(e.target.value)}/>
+              <input className='small-inputBox' type="text" value={category} placeholder='Enter Category' onChange={(e) => setCategory(e.target.value)}/>
+              <input className='small-inputBox' type="number" value={bizarreness} placeholder='Enter Bizarreness Level' onChange={(e) => setBizarreness(e.target.value)}/>
             </div>
-            <input className='inputBox' type="text" value={accessories} placeholder='Enter Accessories' onChange={(e) => useAccessories(e.target.value)}/>
+            <input className='inputBox' type="text" value={accessories} placeholder='Enter Accessories' onChange={(e) => setAccessories(e.target.value)}/>
             <button className='update' onClick={handleUpdade}>Update</button>
         </div>
       </div>
