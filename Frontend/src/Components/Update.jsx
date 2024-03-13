@@ -55,7 +55,7 @@ export default function Update() {
             };
     
             await axios.put(`https://s56-bizarre-hairstyles.onrender.com/update/${_id}`, obj);
-            //navigate('/explore');
+            navigate('/explore');
         } catch (error) {
             console.log(error);
         }
