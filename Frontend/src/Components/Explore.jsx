@@ -30,7 +30,7 @@ export default function Explore() {
 
   return (
     <>
-        <Navbar/>
+        <Navbar/>   
         <h1 className='explore-title'>Explore</h1>
         {data && data.map((info) => {
 					return (
