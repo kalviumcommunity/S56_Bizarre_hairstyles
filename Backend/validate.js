@@ -1,5 +1,9 @@
 const Joi = require('joi')
 
+const validateInput = (schema) => (payload) => {
+    return schema.validate(payload, { abortEarly: false });
+}
+
 const inputSchema = Joi.object({
     hairstyle_name: Joi.string().required(),
     description: Joi.string().required(),
@@ -10,7 +14,5 @@ const inputSchema = Joi.object({
 })
 
 
-export default function validateInput(data) {
-    return inputSchema.validate(data);
-}
-
+const validateData = validateInput(inputSchema);
+module.exports = validateData

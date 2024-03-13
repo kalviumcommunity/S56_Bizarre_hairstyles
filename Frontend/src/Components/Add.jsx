@@ -4,7 +4,6 @@ import Navbar from './Navbar'
 import leftImg from '../assets/formBG.jpg'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import validateInput from '../../../Backend/validate'
 
 export default function Add() {
     const [name, useName] = useState("")
@@ -26,12 +25,6 @@ export default function Add() {
         is_colorful:true,
         accessories_involved:accessories,
         image
-    }
-
-    const { error } = validateInput(data);
-      if (error) {
-        console.error(error.details[0].message);
-        return;
     }
 
     axios.post('https://s56-bizarre-hairstyles.onrender.com/postcontent', obj)
