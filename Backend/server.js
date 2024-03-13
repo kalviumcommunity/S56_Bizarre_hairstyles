@@ -4,6 +4,7 @@ const userModel = require('./Models/user.js')
 const mongoose = require('mongoose')
 const mongoServer = require('./config/db.js')
 const cors = require('cors')
+const validateData = require('./validate.js')
 
 const app = express();
 app.use(cors())
@@ -47,15 +48,27 @@ app.get("/getdata" , async (req,res)=>{
   res.json(data)
 })
 
+// app.post("/postcontent", async(req, res)=>{
+//    try {
+//     console.log(req.body)
+//     let result = new userModel(req.body);
+//     await result.save()
+//     res.send(result)
+//    } catch (error) {
+//     res.status(500).json({ error: error.message })
+//    }
+// })
+
 app.post("/postcontent", async(req, res)=>{
-   try {
-    console.log(req.body)
-    let result = new userModel(req.body);
-    await result.save()
-    res.send(result)
-   } catch (error) {
-    res.status(500).json({ error: error.message })
-   }
+  try {
+   console.log(req.body)
+   const {error} = validateData(req.body)
+   let result = new userModel(req.body);
+   await result.save()
+   res.send(result)
+  } catch (error) {
+   res.status(400).json({ error: "Invalid data"})
+  }
 })
 
 app.put(`/update/:_id`, async(req, res) => {

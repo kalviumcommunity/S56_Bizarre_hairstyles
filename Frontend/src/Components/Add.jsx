@@ -4,28 +4,36 @@ import Navbar from './Navbar'
 import leftImg from '../assets/formBG.jpg'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import validateInput from '../../../Backend/validate'
 
 export default function Add() {
-  const [name, useName] = useState("")
-  const [image, useImage] = useState("")
-  const [description, useDescription] = useState("")
-  const [category, useCategory] = useState("")
-  const [bizarreness, useBizarreness] = useState("")
-  const [accessories, useAccessories] = useState("")
-  const navigate = useNavigate()
+    const [name, useName] = useState("")
+    const [image, useImage] = useState("")
+    const [description, useDescription] = useState("")
+    const [category, useCategory] = useState("")
+    const [bizarreness, useBizarreness] = useState("")
+    const [accessories, useAccessories] = useState("")
+    const navigate = useNavigate()
 
-  const submit = (e) =>{
-     e.preventDefault()
-     let obj={
-      id: Math.random(100,10000000),
-      hairstyle_name:name,
-      description:description,
-      bizarreness_level:bizarreness,
-      category,
-      is_colorful:true,
-      accessories_involved:accessories,
-      image
-  }
+    const submit = (e) =>{
+      e.preventDefault()
+      let obj={
+        id: Math.random(100,10000000),
+        hairstyle_name:name,
+        description:description,
+        bizarreness_level:bizarreness,
+        category,
+        is_colorful:true,
+        accessories_involved:accessories,
+        image
+    }
+
+    const { error } = validateInput(data);
+      if (error) {
+        console.error(error.details[0].message);
+        return;
+    }
+
     axios.post('https://s56-bizarre-hairstyles.onrender.com/postcontent', obj)
     .then(result => {
       console.log(result)
