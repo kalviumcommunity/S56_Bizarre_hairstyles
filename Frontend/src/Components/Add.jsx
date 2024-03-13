@@ -29,7 +29,6 @@ export default function Add() {
     axios.post('https://s56-bizarre-hairstyles.onrender.com/postcontent', obj)
     .then(result => {
       console.log(result)
-      // console.log("hello")
       navigate('/explore')
     })
     .catch(err => console.log(err))
