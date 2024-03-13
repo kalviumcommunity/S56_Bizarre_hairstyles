@@ -74,6 +74,22 @@ app.put(`/update/:_id`, async(req, res) => {
   }
 });
 
+app.delete(`/delete/:_id`, async(req, res) => {
+  const  {_id} = req.params;
+  console.log(_id)
+  try {
+    const deletedUser = await userModel.findByIdAndDelete({_id:_id}, req.body, { new: true });
+    if (!deletedUser) {
+      return res.status(404).json({ error: 'Data not found' });
+    }
+    console.log("Successfully Deleted:", deletedUser);
+    res.json(deletedUser);
+  } catch (error) {
+    console.error("Error Deleting data:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 if (require.main === module) {
     app.listen(3200, (err) => {
        connectToDB()

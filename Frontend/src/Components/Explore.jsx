@@ -17,6 +17,18 @@ export default function Explore() {
         })
     }, [])
 
+    const handledelete = async (_id) =>{
+      try {
+        console.log("Deleted ID:", _id)
+
+        await axios.delete(`https://s56-bizarre-hairstyles.onrender.com/delete/${_id}`);
+        navigate('/explore');
+      } 
+      catch (error) {
+        console.log(error);
+      }
+    }
+
   return (
     <>
         <Navbar/>
@@ -32,7 +44,7 @@ export default function Explore() {
                 <h5 className='category'><strong>Category:</strong> {info.category}</h5>
                 <h5 className='accessories'><strong>Accessories:</strong> {info.accessories_involved} </h5>
                 <Link to={`/update/${info._id}`}><button className='Update-button'>Update</button></Link>
-                <button className='Delete-button'>Delete</button>
+                <button className='Delete-button'  onClick={handledelete}>Delete</button>
               </div>        
             </div>
 					)       
