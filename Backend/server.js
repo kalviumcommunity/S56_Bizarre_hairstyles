@@ -31,7 +31,7 @@ const connectToDB = async () => {
   }
 };
 
-connectToDB()
+
 
 const disconnectFromDB = async () => {
   try {
@@ -58,38 +58,11 @@ app.post("/postcontent", async(req, res)=>{
    }
 })
 
-// app.put("/update/:id", async(req, res)=>{
-//   const {id} = req.params
-//   try{
-//     userModel.findByIdAndUpdate({_id:id}, req.body)
-//     .then((res)=>{
-//       console.log("Successfully updated", res)
-//     })
-//     .catch((err)=>{
-//       console.error(err)
-//     })
-//   }
-//   catch(err){
-//     console.error(err)
-//   }
-// })
-
-app.get("/update/:id" , async (req,res)=>{
-  // let data = await userModel.findByIdAndUpdate({_id:id})
-  // const { id } = req.params;
-  // res.json(data)
-  const id=req.params.id;
-  userModel.findByIdAndUpdate({_id:id},{id:req.body.i,
-        hairstyle_name:req.body.hairstyle_name,description:req.body.description, category:req.body.category,
-        bizarreness_level:req.body.bizarreness_level, accessories_involved:req.body.accessories_involved, image:req.body.image})
-    .then((data) => {res.json(data)})
-    .catch((err) => {res.json(err)})
-})
-
-app.put(`/update/:id`, async(req, res) => {
-  const { id } = req.params;
+app.put(`/update/:_id`, async(req, res) => {
+  const  {_id } = req.params;
+  console.log(_id)
   try {
-    const updatedUser = await userModel.findByIdAndUpdate(id, req.body, { new: true });
+    const updatedUser = await userModel.findByIdAndUpdate({_id:_id}, req.body, { new: true });
     if (!updatedUser) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -103,6 +76,7 @@ app.put(`/update/:id`, async(req, res) => {
 
 if (require.main === module) {
     app.listen(3200, (err) => {
+       connectToDB()
         if (err) console.error(err);
         else console.log('Server is running on port 3200');
     });

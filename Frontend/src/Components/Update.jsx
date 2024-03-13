@@ -38,14 +38,13 @@ export default function Update() {
     //     .catch(err => console.log(err))
     // }
 
-    const {id} = useParams()
+    const {_id} = useParams()
     const handleUpdade = async (e) =>{
         e.preventDefault()
         try {
-            console.log("Updating with ID:", id)
+            console.log("Updating with ID:", _id)
 
             let obj = {
-                _id: id,
                 hairstyle_name: name,
                 description: description,
                 bizarreness_level: bizarreness,
@@ -55,8 +54,8 @@ export default function Update() {
                 image: image
             };
     
-            await axios.put(`https://s56-bizarre-hairstyles.onrender.com/update/${id}`, obj);
-            navigate('/explore');
+            await axios.put(`https://s56-bizarre-hairstyles.onrender.com/update/${_id}`, obj);
+            //navigate('/explore');
         } catch (error) {
             console.log(error);
         }
