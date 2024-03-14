@@ -11,17 +11,17 @@ nav{
     justify-content: space-between;
     box-shadow: 2px 2px 2px rgb(167, 164, 164);
     background-color: aliceblue;
-
 }
 
 .logo{
     font-size: 30px;
     font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     display: flex;
     align-items: center;
-    margin-left: 4vw;
+    margin: 1vh 0 0 2vw;
     text-decoration: underline aliceblue;
-    color: #000;
+    color: #9e61d7;
 }
 
 h4{
@@ -34,8 +34,30 @@ h4:hover{
     color: rgba(123, 44, 191, 1);
 }
 
+.login-logo{
+    width: 20px;
+    height: 20px;
+}
+
 .nav-content{
     display: flex;
     align-items: center;
-    gap: 5vw;
+    gap: 3vw;
+    margin-right: 3rem;
+}
+
+.login-button2, .logout-button2{
+    border: 1px solid rgb(191, 44, 44);
+    margin: 0.5vh 0 0 2.5vw;
+    width: 6vw;
+    height: 5vh;
+    background-color: rgba(123, 44, 191, 1);
+    color: white;
+    border: 0px;
+    border-radius: 3px;
+    transition: 0.5s ease;
+}
+
+.login-button2:hover, .logout-button:hover{
+    background-color: rgb(155, 87, 219);
 }
