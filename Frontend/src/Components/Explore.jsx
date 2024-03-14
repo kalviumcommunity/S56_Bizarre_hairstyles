@@ -51,11 +51,3 @@ export default function Explore() {
     </>
   )
 }
-
-// https://i.pinimg.com/474x/2a/4a/09/2a4a09b15f2e725d001c15ec555cacaa.jpg
-// The Cyberpunk Circuitry
-
-// Description: Shaved sections of hair with LED lights embedded underneath
-// Bizarreness Level: High
-// Category: Cybernetic Edge
-// Accessories: LED hair clips, circuit board hairpins

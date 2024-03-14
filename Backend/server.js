@@ -3,6 +3,7 @@ const router = require('./routes.js')
 const userModel = require('./Models/user.js')
 const mongoose = require('mongoose')
 const mongoServer = require('./config/db.js')
+const inputSchema = require ('./Models/user.js')
 const cors = require('cors')
 
 const app = express();
@@ -48,14 +49,22 @@ app.get("/getdata" , async (req,res)=>{
 })
 
 app.post("/postcontent", async(req, res)=>{
-   try {
-    console.log(req.body)
-    let result = new userModel(req.body);
-    await result.save()
-    res.send(result)
-   } catch (error) {
-    res.status(500).json({ error: error.message })
+  try {
+   console.log(req.body)
+   let result = new userModel(req.body);
+   await result.save()
+   res.send(result)
+
+   const val =  inputSchema.validate(req.body)
+   if(val.error){
+    console.log("Invalid input", val.error)
    }
+   else{
+    return val
+   }
+  } catch (error) {
+   res.status(500).json({ error: error.message })
+  }
 })
 
 app.put(`/update/:_id`, async(req, res) => {
@@ -72,7 +81,7 @@ app.put(`/update/:_id`, async(req, res) => {
     console.error("Error updating user:", error);
     res.status(500).json({ error: error.message });
   }
-});
+})
 
 app.delete(`/delete/:_id`, async(req, res) => {
   const  {_id} = req.params;
