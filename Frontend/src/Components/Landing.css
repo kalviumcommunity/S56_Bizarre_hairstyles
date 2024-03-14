@@ -47,6 +47,7 @@ h3{
     text-align: left;
     font-size: 25px;
     margin-bottom: 3vh;
+    width: 23vw;
 }
 
 h5{
@@ -54,6 +55,8 @@ h5{
     font-size: 15px;
     margin-bottom: 3vh;
     font-weight: normal;
+    width: 20vw;
+    line-height: 1.3rem;
 }
 
 .main-explore{

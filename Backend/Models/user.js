@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Joi = require('joi')
 
+const validator =(inputSchema)=>(payload)=> inputSchema.validate(payload,{abortEarly:false})
+
 const userSchema = new mongoose.Schema({
     hairstyle_name:{type: String, required: true},
     description:{type: String, required: true},
@@ -22,5 +24,5 @@ const userSchema = new mongoose.Schema({
 
 
 const userModel = mongoose.model("bizarre hairstyle", userSchema)
-module.exports = userModel, inputSchema
+module.exports = userModel, validator(inputSchema)
 
