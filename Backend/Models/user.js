@@ -1,17 +1,26 @@
 const mongoose = require('mongoose')
+const Joi = require('joi')
 
 const userSchema = new mongoose.Schema({
-    id:Number,
-    hairstyle_name:String,
-    description:String,
-    bizarreness_level:Number,
-    category:String,
-    is_colorful:Boolean,
-    accessories_involved:String,
-    image:String
+    hairstyle_name:{type: String, required: true},
+    description:{type: String, required: true},
+    bizarreness_level: {type:Number, required: true},
+    category:{type: String, required: true},
+    accessories_involved:{type: String, required: true},
+    image:{type: String, required: true}
 })
 
-const userModel = mongoose.model("bizarre hairstyle", userSchema)
+    const inputSchema = Joi.object({
+    hairstyle_name: Joi.string().strict().required(),
+    description: Joi.string().required(),
+    bizarreness_level: Joi.number().required(),
+    category:Joi.string().required(),
+    accessories_involved:Joi.string().required(),
+    image:Joi.string().required()
+})
+    
 
-module.exports = userModel
+
+const userModel = mongoose.model("bizarre hairstyle", userSchema)
+module.exports = userModel, inputSchema
 
