@@ -57,7 +57,7 @@ app.post("/postcontent", async(req, res)=>{
 
    const val =  inputSchema.validate(req.body)
    if(val.error){
-    console.log("Invalid input", error)
+    console.log("Invalid input", val.error)
    }
    else{
     return val

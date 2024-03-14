@@ -6,12 +6,12 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 export default function Add() {
-    const [name, useName] = useState("")
-    const [image, useImage] = useState("")
-    const [description, useDescription] = useState("")
-    const [category, useCategory] = useState("")
-    const [bizarreness, useBizarreness] = useState("")
-    const [accessories, useAccessories] = useState("")
+    const [name, setName] = useState("")
+    const [image, setImage] = useState("")
+    const [description, setDescription] = useState("")
+    const [category, setCategory] = useState("")
+    const [bizarreness, setBizarreness] = useState("")
+    const [accessories, setAccessories] = useState("")
     const navigate = useNavigate()
 
     const submit = (e) =>{
@@ -45,14 +45,14 @@ export default function Add() {
         </div>
         <div className='post-container'>
             <h2 className='post-title'>Post</h2>
-            <input className='inputBox' value={image} type="text" placeholder='Enter Image URL' onChange={(e) => useImage(e.target.value)}/>
-            <input className='inputBox' type="text" value={name} placeholder='Enter Name of the Hairstyle' onChange={(e) => useName(e.target.value)}/>
-            <input className='inputBox' type="text" value={description} placeholder='Enter Description of the Hairstyle' onChange={(e) => useDescription(e.target.value)}/>
+            <input className='inputBox' value={image} type="text" placeholder='Enter Image URL' onChange={(e) => setImage(e.target.value)}/>
+            <input className='inputBox' type="text" value={name} placeholder='Enter Name of the Hairstyle' onChange={(e) => setName(e.target.value)}/>
+            <input className='inputBox' type="text" value={description} placeholder='Enter Description of the Hairstyle' onChange={(e) => setDescription(e.target.value)}/>
             <div className='category-bLevel'>
-              <input className='small-inputBox' type="text" value={category} placeholder='Enter Category' onChange={(e) => useCategory(e.target.value)}/>
-              <input className='small-inputBox' type="number" value={bizarreness} placeholder='Enter Bizarreness Level' onChange={(e) => useBizarreness(e.target.value)}/>
+              <input className='small-inputBox' type="text" value={category} placeholder='Enter Category' onChange={(e) => setCategory(e.target.value)}/>
+              <input className='small-inputBox' type="number" value={bizarreness} placeholder='Enter Bizarreness Level' onChange={(e) => setBizarreness(e.target.value)}/>
             </div>
-            <input className='inputBox' type="text" value={accessories} placeholder='Enter Accessories' onChange={(e) => useAccessories(e.target.value)}/>
+            <input className='inputBox' type="text" value={accessories} placeholder='Enter Accessories' onChange={(e) => setAccessories(e.target.value)}/>
             <button className='post' onClick={submit}>Post</button>
         </div>
       </div>
