@@ -68,6 +68,14 @@ app.post("/postcontent", async(req, res)=>{
   }
 })
 
+app.post("/auth", (req, res)=>{
+  const {username} = req.body
+  const token = JWT.sign({
+    username: username
+  } , "123")
+  res.send(token)
+})
+
 app.put(`/update/:_id`, async(req, res) => {
   const  {_id } = req.params;
   console.log(_id)

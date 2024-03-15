@@ -14,7 +14,11 @@ export default function Login() {
   const handleLogin = async () => {
     if (username !== '' && password !== '') {
       try {
-        setCookie('userName', username, { expires: new Date(Date.now() + 31536000000) });
+        const result = axios.post("https://s56-bizarre-hairstyles.onrender.com/auth", {username: username})
+
+        const token = result.data
+
+        setCookie('userName', token, { expires: new Date(Date.now() + 31536000000) });
         setCookie('password', password, { expires: new Date(Date.now() + 31536000000) });
 
         alert('Successfully LoggedIn!');
