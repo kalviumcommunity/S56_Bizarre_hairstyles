@@ -22,8 +22,8 @@ export default function Login() {
 
     const handleLogin = () => {
         if (username !== '' && password !== '') {
-            document.cookie = `userName=${username}; expires=Fri, 1 April 2799 12:00:00 UTC;`
-            document.cookie = `password=${password}; expires=Fri, 1 April 2799 12:00:00 UTC;`
+            document.cookie = `userName=${username}; expires=Fri, 1 January 2799 12:00:00 UTC;`
+            document.cookie = `password=${password}; expires=Fri, 1 January 2799 12:00:00 UTC;`
 
             alert('Successfully LoggedIn!')
             console.log("Logged in")
