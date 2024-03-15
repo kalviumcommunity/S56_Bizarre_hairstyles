@@ -4,6 +4,7 @@ import { useCookies } from 'react-cookie';
 import Navbar from './Navbar';
 import loginImg from '../assets/loginImg.png';
 import './Login.css';
+import axios from "axios"
 
 export default function Login() {
   const [username, setUserName] = useState('');
@@ -14,13 +15,13 @@ export default function Login() {
   const handleLogin = async () => {
     if (username !== '' && password !== '') {
       try {
-        const result = axios.post("https://s56-bizarre-hairstyles.onrender.com/auth", {username: username})
-
-        const token = result.data
-
+        const result = await axios.post("https://s56-bizarre-hairstyles.onrender.com/auth", {username: username});
+  
+        const token = result.data;
+  
         setCookie('userName', token, { expires: new Date(Date.now() + 31536000000) });
         setCookie('password', password, { expires: new Date(Date.now() + 31536000000) });
-
+  
         alert('Successfully LoggedIn!');
         navigate('/');
       } catch (error) {
@@ -31,7 +32,7 @@ export default function Login() {
       alert('UserName and Password are Required!!');
     }
   };
-
+  
   return (
     <>
       <Navbar />
