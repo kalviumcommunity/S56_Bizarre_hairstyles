@@ -4,11 +4,13 @@ import small from "../assets/small-img.png"
 import big from "../assets/big-img.jpg"
 import Navbar from './Navbar.jsx'
 import { Link } from 'react-router-dom'
+import { useCookies } from 'react-cookie';
+
 
 const Landing = () => {
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className='middle-content'>
         <h1>Hair Spectacle</h1>
         <img src={small} alt="small img" className='small-img'/>

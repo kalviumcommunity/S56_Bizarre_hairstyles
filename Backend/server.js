@@ -4,6 +4,7 @@ const userModel = require('./Models/user.js')
 const mongoose = require('mongoose')
 const mongoServer = require('./config/db.js')
 const inputSchema = require ('./Models/user.js')
+const JWT = require("jsonwebtoken")
 const cors = require('cors')
 
 const app = express();
@@ -83,6 +84,7 @@ app.put(`/update/:_id`, async(req, res) => {
   }
 })
 
+
 app.delete(`/delete/:_id`, async(req, res) => {
   const  {_id} = req.params;
   console.log(_id)
@@ -98,6 +100,7 @@ app.delete(`/delete/:_id`, async(req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 
 if (require.main === module) {
     app.listen(3200, (err) => {
