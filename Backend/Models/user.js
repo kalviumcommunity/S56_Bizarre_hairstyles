@@ -19,8 +19,7 @@ const inputSchema = Joi.object({
     bizarreness_level: Joi.number().required(),
     category:Joi.string().required(),
     accessories_involved:Joi.string().required(),
-    image:Joi.string().required(),
-    user: Joi.string().required()
+    image:Joi.string().required()
 })
     
 const usernameSchema = new mongoose.Schema({
