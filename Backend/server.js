@@ -72,7 +72,7 @@ app.post("/auth", (req, res)=>{
   const {username} = req.body
   const token = JWT.sign({
     username: username
-  } , "123")
+  } , process.env.JWT_SECRET, { expiresIn: '1h' })
   res.send(token)
 })
 
