@@ -28,6 +28,6 @@ const usernameSchema = new mongoose.Schema({
 
 
 const userModel = mongoose.model("bizarre hairstyle", userSchema)
-const usernameModel = mongoose.model("users", usernameSchema)
+const usernameModel = mongoose.model("user", usernameSchema)
 
-module.exports = userModel, validatePayload(inputSchema), usernameModel
+module.exports ={ userModel, usernameModel}

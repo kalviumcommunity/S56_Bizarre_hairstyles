@@ -1,7 +1,7 @@
 const express = require('express')
 const router = require('./routes.js')
-const userModel = require('./Models/user.js')
-const usernameModel = require('./Models/user.js')
+const {userModel} = require('./Models/user.js')
+const {usernameModel} = require('./Models/user.js')
 const mongoose = require('mongoose')
 const mongoServer = require('./config/db.js')
 const inputSchema = require ('./Models/user.js')
@@ -75,6 +75,12 @@ app.post("/auth", (req, res)=>{
     username: username
   } , "123", { expiresIn: '1h' })
   res.send(token)
+})
+
+app.get("/getusers", async(req,res)=>{
+  console.log("hello")
+  let data = await usernameModel.find({})
+  res.send(data)
 })
 
 app.post("/user", async (req,res)=>{
