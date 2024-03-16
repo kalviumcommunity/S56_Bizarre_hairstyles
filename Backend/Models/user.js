@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
     bizarreness_level: {type:Number, required: true},
     category:{type: String, required: true},
     accessories_involved:{type: String, required: true},
-    image:{type: String, required: true}
+    image:{type: String, required: true},
+    user:{type: String, required: true}
 })
 
 const inputSchema = Joi.object({
@@ -18,10 +19,16 @@ const inputSchema = Joi.object({
     bizarreness_level: Joi.number().required(),
     category:Joi.string().required(),
     accessories_involved:Joi.string().required(),
-    image:Joi.string().required()
+    image:Joi.string().required(),
+    user: Joi.string().required()
+})
+    
+const usernameSchema = new mongoose.Schema({
+    user: {type: String, required: true}
 })
 
 
 const userModel = mongoose.model("bizarre hairstyle", userSchema)
-module.exports = userModel, validatePayload(inputSchema)
+const usernameModel = mongoose.model("user", usernameSchema)
 
+module.exports = userModel, validatePayload(inputSchema), usernameModel

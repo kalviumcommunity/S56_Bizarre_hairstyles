@@ -29,6 +29,14 @@ export default function Login() {
           expires: new Date(Date.now() + 31536000000),
         });
 
+        let user = username
+        axios
+          .post("https://s56-bizarre-hairstyles.onrender.com/user", user)
+          .then((result) => {
+            console.log(result);
+          })
+          .catch((err) => console.log(err));
+
         alert("Successfully LoggedIn!");
         navigate("/");
       } catch (error) {
