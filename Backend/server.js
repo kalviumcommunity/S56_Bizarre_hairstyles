@@ -78,6 +78,7 @@ app.post("/auth", (req, res)=>{
 })
 
 app.post("/user", async (req,res)=>{
+  console.log(req.body)
   let response = new usernameModel(req.body);
    await response.save()
    res.send(response)
