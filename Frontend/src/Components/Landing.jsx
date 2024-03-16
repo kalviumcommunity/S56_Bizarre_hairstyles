@@ -4,7 +4,6 @@ import small from "../assets/small-img.png"
 import big from "../assets/big-img.jpg"
 import Navbar from './Navbar.jsx'
 import { Link } from 'react-router-dom'
-import { useCookies } from 'react-cookie';
 
 
 const Landing = () => {

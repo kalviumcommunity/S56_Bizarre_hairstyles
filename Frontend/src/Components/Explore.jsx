@@ -25,7 +25,7 @@ export default function Explore() {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
   return (
     <>

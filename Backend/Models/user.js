@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     image:{type: String, required: true}
 })
 
-    const inputSchema = Joi.object({
+const inputSchema = Joi.object({
     hairstyle_name: Joi.string().strict().required(),
     description: Joi.string().required(),
     bizarreness_level: Joi.number().required(),
@@ -20,7 +20,6 @@ const userSchema = new mongoose.Schema({
     accessories_involved:Joi.string().required(),
     image:Joi.string().required()
 })
-    
 
 
 const userModel = mongoose.model("bizarre hairstyle", userSchema)
