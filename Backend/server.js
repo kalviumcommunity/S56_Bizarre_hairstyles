@@ -1,7 +1,6 @@
 const express = require('express')
 const router = require('./routes.js')
-const {userModel} = require('./Models/user.js')
-const {usernameModel} = require('./Models/user.js')
+const { userModel, usernameModel } = require('./Models/user.js')
 const mongoose = require('mongoose')
 const {inputSchema} = require ('./Models/user.js')
 const mongoServer = require('./config/db.js')
@@ -52,7 +51,7 @@ app.get("/getdata" , async (req,res)=>{
 })
 
 app.post("/postcontent", async (req, res) => {
-  console.log(req.body); // Debugging: Log the request body to see if data is arriving correctly
+  console.log(req.body); 
   try {
     const { error } = validatePayload(req.body);
     if (error) {
@@ -61,7 +60,7 @@ app.post("/postcontent", async (req, res) => {
       let result = new userModel(req.body);
       await result.save();
       console.log(result);
-      res.status(201).send(result); // Return success response
+      res.status(201).send(result);
     }
   } catch (error) {
     console.error(error);
