@@ -31,14 +31,14 @@ export default function Login() {
 
         let user = username
         axios
-          .post("https://s56-bizarre-hairstyles.onrender.com/user", user)
+          .post("https://s56-bizarre-hairstyles.onrender.com/user", {user})
           .then((result) => {
             console.log(result);
+            alert("Successfully LoggedIn!");
+            navigate("/");
           })
           .catch((err) => console.log(err));
 
-        alert("Successfully LoggedIn!");
-        navigate("/");
       } catch (error) {
         console.error("Login error:", error);
         alert("Login failed. Please check your credentials.");
