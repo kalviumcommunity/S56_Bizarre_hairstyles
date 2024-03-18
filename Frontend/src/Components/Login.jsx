@@ -22,15 +22,27 @@ export default function Login() {
 
         const token = result.data;
 
-        setCookie("userName", token, {
+        setCookie("userName", username, {
           expires: new Date(Date.now() + 31536000000),
         });
+        setCookie("name", token , {
+          expires: new Date(Date.now() + 31536000000),
+        });
+        
         setCookie("password", password, {
           expires: new Date(Date.now() + 31536000000),
         });
+        
+        let user = username
+        axios
+          .post("https://s56-bizarre-hairstyles.onrender.com/user", {user})
+          .then((result) => {
+            console.log(result);
+            alert("Successfully LoggedIn!");
+            navigate("/");
+          })
+          .catch((err) => console.log(err));
 
-        alert("Successfully LoggedIn!");
-        navigate("/");
       } catch (error) {
         console.error("Login error:", error);
         alert("Login failed. Please check your credentials.");

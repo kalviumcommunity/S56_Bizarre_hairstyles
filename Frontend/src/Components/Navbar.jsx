@@ -4,7 +4,7 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
-  const [cookies, setCookie, removeCookie] = useCookies(['userName', 'password']);
+  const [cookies, setCookie, removeCookie] = useCookies(['userName', 'password','name']);
   const [login, setLogin] = useState(false);
 
   useEffect(() => {
@@ -19,6 +19,7 @@ export default function Navbar() {
   const handleLogout = () => {
     removeCookie('userName');
     removeCookie('password');
+    removeCookie("name");
     setLogin(false);
   };
 

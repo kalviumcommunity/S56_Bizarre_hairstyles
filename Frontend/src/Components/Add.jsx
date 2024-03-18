@@ -3,6 +3,7 @@ import './Add.css'
 import Navbar from './Navbar'
 import leftImg from '../assets/formBG.jpg'
 import axios from 'axios'
+import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom'
 
 export default function Add() {
@@ -13,10 +14,15 @@ export default function Add() {
     const [bizarreness, setBizarreness] = useState("")
     const [accessories, setAccessories] = useState("")
     const navigate = useNavigate()
+    const [cookies, getCookie] = useCookies(['userName']);
 
+    
+    
     const submit = (e) =>{
       e.preventDefault()
-      let obj={
+      const username = cookies.userName;
+      console.log(username)
+      const obj={
         id: Math.random(100,10000000),
         hairstyle_name:name,
         description:description,
@@ -24,16 +30,17 @@ export default function Add() {
         category,
         is_colorful:true,
         accessories_involved:accessories,
-        image
+        image,
+        user:username
     }
 
-    axios.post('https://s56-bizarre-hairstyles.onrender.com/postcontent', obj)
+    axios.post('http://localhost:3200/postcontent', obj)
     .then(result => {
       console.log(result)
       navigate('/explore')
     })
     .catch(err => console.log(err))
-  }
+  } 
 
   return (
     <>
