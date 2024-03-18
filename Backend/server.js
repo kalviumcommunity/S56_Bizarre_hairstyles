@@ -3,10 +3,11 @@ const router = require('./routes.js')
 const {userModel} = require('./Models/user.js')
 const {usernameModel} = require('./Models/user.js')
 const mongoose = require('mongoose')
+const {inputSchema} = require ('./Models/user.js')
 const mongoServer = require('./config/db.js')
-const inputSchema = require ('./Models/user.js')
 const JWT = require("jsonwebtoken")
 const cors = require('cors')
+const { validatePayload} = require('./Models/user.js');
 
 const app = express();
 app.use(cors())
@@ -50,24 +51,24 @@ app.get("/getdata" , async (req,res)=>{
   res.json(data)
 })
 
-app.post("/postcontent", async(req, res)=>{
+app.post("/postcontent", async (req, res) => {
+  console.log(req.body); // Debugging: Log the request body to see if data is arriving correctly
   try {
-   console.log(req.body)
-   let result = new userModel(req.body);
-   await result.save()
-   res.send(result)
-
-   const val =  inputSchema.validate(req.body)
-   if(val.error){
-    console.log("Invalid input", val.error)
-   }
-   else{
-    return val
-   }
+    const { error } = validatePayload(req.body);
+    if (error) {
+      return res.status(400).json({ error: error.details[0].message });
+    } else {
+      let result = new userModel(req.body);
+      await result.save();
+      console.log(result);
+      res.status(201).send(result); // Return success response
+    }
   } catch (error) {
-   res.status(500).json({ error: error.message })
+    console.error(error);
+    res.status(500).send("Internal Server Error");
   }
-})
+});
+
 
 app.post("/auth", (req, res)=>{
   const {username} = req.body

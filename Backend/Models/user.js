@@ -31,4 +31,4 @@ const usernameSchema = new mongoose.Schema({
 const userModel = mongoose.model("bizarre hairstyle", userSchema)
 const usernameModel = mongoose.model("user", usernameSchema)
 
-module.exports ={ userModel, usernameModel}
+module.exports ={ userModel, usernameModel, validatePayload, inputSchema}
