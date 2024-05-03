@@ -88,7 +88,6 @@ app.post("/user", async (req,res)=>{
   let response = new usernameModel(req.body);
    await response.save()
    res.send(response)
-
 })
 
 app.put(`/update/:_id`, async(req, res) => {
