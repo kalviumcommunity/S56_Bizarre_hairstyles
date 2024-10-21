@@ -1,7 +1,5 @@
 # Bizarre Hairstyles
 
-## [Deployed Link](https://s56-bizarre-hairstyles.onrender.com)
-
 ## [Frontend Deployed Link](https://s56-bizarre-hairstyles.netlify.app/) 
 
 A live version of the Bizarre Hairstyles project showcasing unique and creative hairstyles from around the world.
